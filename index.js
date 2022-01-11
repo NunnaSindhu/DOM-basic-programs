@@ -13,23 +13,24 @@ document.getElementById("display").innerHTML=`<h1>Word Length is:${word.length}<
 
 });
 
-let y = Math.floor(Math.random() * 10 + 1);
-let guess=1;
-console.log(y);
-let submit = document.getElementById("submitGuess");
-submit.addEventListener("click",function () {
-  let x = document.getElementById("text").value;
-  if (x==y) {
-   alert(`Congratulations you guess the correct number with guesscount of ${guess}  `);
-  } else if (x > y) {
-    alert(`Sorry!! Enter the small number`);
-    guess++;
-  } else if(x < y){
-    alert(`Sorry!! enter the larger number`);
-    guess++;
+let secrectNum = Math.floor(Math.random() * 10 + 1);
+let guessCount=1;
+
+let submitButton = document.getElementById("submitButton");
+let ptag=document.getElementById("display");
+submitButton.addEventListener("click",function (event) {
+    event.preventDefault();
+  let currentNumber = document.getElementById("text").value;
+  if (currentNumber==secrectNum) {
+   ptag.innerHTML=`Congratulations you guess the correct number with guesscount of ${guessCount}  `;
+  } else if (currentNumber > secrectNum) {
+    ptag.innerHTML=`Sorry!! Enter the small number`;
+    guessCount++;
+  } else if(currentNumber < secrectNum){
+    ptag.innerHTML=`Sorry!! enter the larger number`;
+    guessCount++;
   }
 });
-
 document.getElementById("color1").addEventListener("mouseover",function () {
     document.getElementById("display").innerHTML="Red";
     document.getElementById("display").style.backgroundColor = "red";
